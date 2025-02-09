@@ -1,0 +1,23 @@
+[package]
+name = "HallHacker"
+version = "0.1.0"
+edition = "2021"
+build = "build.rs"
+
+[profile.dev]
+package = {"*" = {opt-level = 3}}
+incremental = true
+
+[profile.release]
+lto = true
+strip = true
+debug = false
+codegen-units = 1
+
+[dependencies]
+game = {path = "game"}
+engine = {path = "engine"}
+anyhow = "1.0.95"
+
+[build-dependencies]
+static_vcruntime = "2.0.0"
